@@ -1,0 +1,11 @@
+SELECT
+  Repair_order,
+  Job_description,
+  Hours,
+  Non_hours,
+FROM
+  `mechanic_work.23_10_Common_Jobs`
+JOIN
+  `mechanic_work.Common_jobs`
+ON
+  Common_job_letter = Unique_job_code
