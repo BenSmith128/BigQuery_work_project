@@ -1,0 +1,38 @@
+WITH CTE_1 AS (
+  SELECT
+    Repair_order,
+    Job_description,
+    Hours,
+    Non_hours
+  FROM
+    `mechanic_work.23_10_Common_Jobs`
+  JOIN
+    `mechanic_work.Common_jobs`
+  ON
+    Common_job_letter = Unique_job_code
+)
+
+, CTE_2 AS (
+  SELECT
+    CTE_1.Repair_order,
+    CTE_1.Job_description,
+    CTE_1.Hours,
+    CTE_1.Non_hours
+  FROM
+    CTE_1.
+
+  UNION ALL
+
+  SELECT
+    Repair_order,
+    Job_description,
+    Hours,
+    Non_hours
+  FROM
+    `mechanic_work.23_10_Unique_Jobs`
+)
+
+SELECT
+  *
+FROM
+  CTE_2;
