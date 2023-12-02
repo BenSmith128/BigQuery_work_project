@@ -1,15 +1,15 @@
 WITH CTE_1 AS (
   SELECT
-    Repair_order,
-    Job_description,
-    Hours,
-    Non_hours
+    t1.Repair_order,
+    t2.Job_description,
+    t2.Hours,
+    t2.Non_hours
   FROM
-    `mechanic_work.23_10_Common_Jobs`
+    `mechanic_work.23_10_Common_Jobs` t1
   JOIN
-    `mechanic_work.Common_jobs`
+    `mechanic_work.Common_jobs` t2
   ON
-    Common_job_letter = Unique_job_code
+    t1.Common_job_letter = t2.Unique_job_code
 )
 
 , CTE_2 AS (
@@ -24,12 +24,12 @@ WITH CTE_1 AS (
   UNION ALL
 
   SELECT
-    Repair_order,
-    Job_description,
-    Hours,
-    Non_hours
+    t3.Repair_order,
+    t3.Job_description,
+    t3.Hours,
+    t3.Non_hours
   FROM
-    `mechanic_work.23_10_Unique_Jobs`
+    `mechanic_work.23_10_Unique_Jobs` t3
 )
 
 SELECT
