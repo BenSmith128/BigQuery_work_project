@@ -19,7 +19,7 @@ WITH CTE_1 AS (
     CTE_1.Hours,
     CTE_1.Non_hours
   FROM
-    CTE_1.
+    CTE_1
 
   UNION ALL
 
