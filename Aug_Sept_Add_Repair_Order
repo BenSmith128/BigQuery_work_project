@@ -1,0 +1,9 @@
+CREATE TABLE `mechanic_work.2023_Job_Details_A` AS (
+  SELECT
+    Date_completed,
+    Vehicle_model,
+    Hours,
+    Non_hours,
+    99999 + (ROW_NUMBER() OVER (ORDER BY Date_completed ASC, Hours ASC, Non_hours ASC)) AS Repair_order
+  FROM `mechanic_work.2023_Job_Details`
+);
