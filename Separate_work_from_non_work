@@ -1,0 +1,21 @@
+CREATE TABLE `mechanic_work.2023_Job_Details_A` AS (
+  SELECT
+    Date_completed,
+    Repair_order,
+    Hours,
+    0 AS Non_hours
+  FROM `mechanic_work.2023_Job_Details`
+  WHERE
+    Hours > 0
+
+  UNION ALL
+
+  SELECT
+    Date_completed,
+    Repair_order,
+    0 AS Hours,
+    Non_hours
+  FROM `mechanic_work.2023_Job_Details`
+  WHERE
+    Non_hours > 0
+);
