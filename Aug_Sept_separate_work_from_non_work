@@ -2,6 +2,7 @@ CREATE TABLE `mechanic_work.2023_Job_Details_A` AS (
   SELECT
     Date_completed,
     Repair_order,
+    Vehicle_model,
     Hours,
     0 AS Non_hours
   FROM `mechanic_work.2023_Job_Details`
@@ -13,6 +14,7 @@ CREATE TABLE `mechanic_work.2023_Job_Details_A` AS (
   SELECT
     Date_completed,
     Repair_order,
+    Vehicle_model,
     0 AS Hours,
     Non_hours
   FROM `mechanic_work.2023_Job_Details`
