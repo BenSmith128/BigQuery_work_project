@@ -1,0 +1,13 @@
+CREATE TABLE `mechanic_work.2023_Job_Details_B` AS (
+  SELECT
+    Repair_order,
+    Date_completed,
+    Vehicle_model,
+    CASE
+      WHEN Non_hours = 0 THEN 'Total hours'
+      WHEN Hours = 0 THEN 'Total Non-Hours'
+    END AS Job_description,
+    Hours,
+    Non_hours
+  FROM `mechanic_work.2023_Job_Details_A`  
+);
