@@ -1,0 +1,52 @@
+WITH md AS (
+  SELECT
+    Date_completed,
+    Vehicle_model,
+    Hours,
+    Dollars
+  FROM `mechanic_work.Data_In_Sheets`
+  WHERE DATE_TRUNC(Date_completed, MONTH) = '2023-08-01'
+)
+
+, uhd AS (
+  SELECT
+    md.Hours,
+    0 AS Dollars
+  FROM md
+  WHERE md.Hours > 0
+  GROUP BY md.Hours
+
+  UNION ALL
+
+  SELECT
+    0 AS Hours,
+    md.Dollars
+  FROM md
+  WHERE md.Dollars > 0
+  GROUP BY md.Dollars
+)
+
+, jd AS (
+  SELECT
+    CASE
+      WHEN uhd.Dollars = 0 THEN 'Total hours'
+      WHEN uhd.Hours = 0 THEN 'Total dollars'
+    END AS Job_description,
+    uhd.Hours,
+    uhd.Dollars
+  FROM uhd
+)
+
+, jc AS (
+  SELECT
+    1001 - ROW_NUMBER() OVER (ORDER BY jd.Dollars, jd.Hours) AS Job_code,
+    jd.Job_description,
+    jd.Hours,
+    jd.Dollars
+  FROM jd
+)
+
+SELECT
+  *
+FROM jc
+ORDER BY jc.Dollars, jc.Hours;
