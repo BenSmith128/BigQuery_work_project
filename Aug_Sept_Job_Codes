@@ -1,8 +1,0 @@
-CREATE TABLE `mechanic_work.Job_Codes` AS (
-  SELECT
-    1001 - ROW_NUMBER() OVER (ORDER BY Dollars, Hours) AS Job_code,
-    Job_description,
-    Hours,
-    Dollars
-  FROM `mechanic_work.5_job_description`
-);
