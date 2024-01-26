@@ -1,0 +1,19 @@
+WITH aude AS (
+  SELECT
+    Date_completed,
+    Vehicle_model
+  FROM `mechanic_work.23_08_to_09_Data_In_Sheets`
+
+  UNION ALL
+
+  SELECT
+    Date_completed,
+    Vehicle_model
+  FROM `mechanic_work.23_10_to_12_Vehicle_Data_From_Work_Orders`
+)
+
+SELECT DISTINCT
+  aude.Vehicle_model,
+  COUNT(aude.Vehicle_model) OVER (PARTITION BY aude.Vehicle_model) AS Vehicle_count
+FROM aude
+ORDER BY Vehicle_count DESC, aude.Vehicle_model;

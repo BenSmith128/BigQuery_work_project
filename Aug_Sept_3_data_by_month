@@ -1,9 +1,0 @@
-CREATE TABLE `mechanic_work.3_data_by_month` AS (
-  SELECT
-    Date_completed,
-    Vehicle_model,
-    Hours,
-    Dollars
-  FROM `mechanic_work.Data_In_Sheets`
-  WHERE DATE_TRUNC(Date_completed, MONTH) = '2023-08-01'
-);
