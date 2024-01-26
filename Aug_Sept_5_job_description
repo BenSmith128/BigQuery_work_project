@@ -1,9 +1,0 @@
-CREATE TABLE `mechanic_work.5_job_description` AS (
-  SELECT
-    CASE
-      WHEN Dollars = 0 THEN 'Total hours'
-      WHEN Hours = 0 THEN 'Total dollars'
-    END AS Job_description,
-    Hours,
-    Dollars    
-  FROM `mechanic_work.4_unique_dollars_hours`
