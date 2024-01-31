@@ -1,0 +1,9 @@
+SELECT
+  Vehicle_model,
+  COUNT(Vehicle_model) AS vs
+FROM `mechanic_work.23_08_to_09_Data_In_Sheets`
+GROUP BY Vehicle_model
+ORDER BY
+  vs DESC,
+  Vehicle_model
+LIMIT 5;
