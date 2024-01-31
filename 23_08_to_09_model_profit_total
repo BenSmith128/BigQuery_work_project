@@ -1,0 +1,12 @@
+SELECT DISTINCT
+  Vehicle_model,
+  SUM(Hours) OVER (PARTITION BY Vehicle_model) * 30 + SUM(Dollars) OVER (PARTITION BY Vehicle_model) AS vs
+FROM `mechanic_work.23_08_to_09_Data_In_Sheets`
+GROUP BY
+  Vehicle_model,
+  Hours,
+  Dollars
+ORDER BY
+  vs DESC,
+  Vehicle_model
+LIMIT 5;
